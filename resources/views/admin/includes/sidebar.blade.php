@@ -140,6 +140,20 @@
           </li>
 
           <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#information" aria-expanded="false" aria-controls="information">
+              <i class="icon-layout menu-icon"></i>
+              <span class="menu-title">{{ __('custom.Information') }}</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="information">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{{ route('information.index') }}">{{ __('custom.All Information') }}</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('information.create') }}">{{ __('custom.Add Information') }}</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#pricing" aria-expanded="false" aria-controls="pricing">
               <i class="icon-layout menu-icon"></i>
               <span class="menu-title">{{ __('custom.Pricing') }}</span>

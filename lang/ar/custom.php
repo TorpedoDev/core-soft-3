@@ -180,4 +180,15 @@ return [
      'Select' => 'تحديد',
      'Unselect' => 'الغاء التحديد',
      'price' => 'السعر',
+
+     'Information' => 'معلومات الاتصال',
+     'All Information' => 'كل المعلومات',
+     'Add Information' => 'اضافة معلومات اتصال',
+     'phone' => 'رقم الهاتف',
+     'Edit Information' => 'تعديل المعلومات',
+     'Information added successfully' => 'تم اضافة المعلومات بنجاح',
+     'Information updated successfully' => 'تم تعديل المعلومات بنجاح',
+     'Information deleted successfully' => 'تم حذف المعلومات بنجاح',
+     'Information activated successfully' => 'تم تنشيط المعلومات بنجاح',
+     'Information deactivated successfully' => 'تم تعطيل المعلومات بنجاح',
 ];

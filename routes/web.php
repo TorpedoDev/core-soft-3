@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\AppController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\InformationController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\PricingController;
 use App\Http\Controllers\Admin\QuestionController;
@@ -46,7 +47,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('/technology' , TechnologyController::class);
     Route::get('/technology/changestatus/{id}' , [TechnologyController::class , 'changeStatus'])->name('technology.changestatus');
 
-    Route::resource('/messages' , MessageController::class);
+    Route::get('/messages' , [MessageController::class , 'index'])->name('messages.index');
+    Route::delete('/messages/{id}' , [MessageController::class , 'destroy'])->name('messages.destroy');
 
     Route::resource('/question' , QuestionController::class);
     Route::get('/question/changestatus/{id}' , [ServiceController::class , 'changeStatus'])->name('question.changestatus');
@@ -77,9 +79,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/pricing/changestatus/{id}' , [PricingController::class , 'changeStatus'])->name('pricing.changestatus');
     Route::get('/pricing/showselected/{id}' , [PricingController::class , 'showselected'])->name('pricing.showselected');
 
+    Route::resource('/information' , InformationController::class);
+    Route::get('/information/changestatus/{id}' , [InformationController::class , 'changeStatus'])->name('information.changestatus');
+
 });
 
 require __DIR__.'/auth.php';
 
-
+Route::post('/messages' , [MessageController::class , 'store'])->name('messages.store');
 Route::get('/home' , [HomeController::class , 'home']);

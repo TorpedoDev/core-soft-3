@@ -32,7 +32,7 @@ class MessageController extends Controller
     public function store(MessageRequest $request)
     {
         Message::create($request->validated());
-        return redirect()->route('messages.index')->with('success' , __('custom.Message sent successfully...We will reply soon'));
+        return redirect()->back()->with('success' , __('custom.Message sent successfully...We will reply soon'));
     }
 
     /**

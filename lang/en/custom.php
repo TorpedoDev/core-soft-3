@@ -181,5 +181,15 @@ return [
      'Edit Pricing' => 'Edit Pricing',
      'price' => 'price',
 
+     'Information' => 'Information',
+     'All Information' => 'All Information',
+     'Add Information' => 'Add Information',
+     'phone' => 'phone',
+     'Edit Information' => 'Edit Information',
+     'Information added successfully' => 'Information added successfully',
+     'Information updated successfully' => 'Information updated successfully',
+     'Information deleted successfully' => 'Information deleted successfully',
+     'Information activated successfully' => 'Information activated successfully',
+     'Information deactivated successfully' => 'Information deactivated successfully',
 
 ];

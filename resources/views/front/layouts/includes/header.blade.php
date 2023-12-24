@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}" lang="en">
 
 <head>
   <meta charset="utf-8">

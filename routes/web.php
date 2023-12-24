@@ -93,3 +93,4 @@ require __DIR__.'/auth.php';
 Route::post('/messages' , [MessageController::class , 'store'])->name('messages.store');
 Route::get('/home' , [HomeController::class , 'home']);
 Route::get('/blog/{blog}' , [HomeController::class , 'showBlog'])->name('blog.details');
+Route::get('/service/{service}' , [HomeController::class , 'showservice'])->name('service.details');

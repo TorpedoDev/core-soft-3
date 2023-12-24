@@ -43,5 +43,11 @@ class HomeController extends Controller
     {
         return view('front.showblog' , compact('blog'));
     }
- 
+
+    
+    public function showservice(Service $service)
+    {
+      return view('front.showservice' , compact('service'));
+    }
 }
+

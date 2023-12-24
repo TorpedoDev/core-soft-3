@@ -244,7 +244,7 @@
                                             {{ substr($service->description_ar, 0, 25) }}
                                         @endif
                                     </p>
-                                    <a href="#" class="readmore stretched-link">{{__('custom.Read more')}} <i
+                                    <a href="{{route('service.details' , $service->id)}}" class="readmore stretched-link">{{__('custom.Read more')}} <i
                                             class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div><!-- End Service Item -->

@@ -6,6 +6,9 @@
 @endif
 <div class="col-lg-12 grid-margin stretch-card">
   <div class="card">
+    <div class="card-header">        
+      <a style="float: right" class="btn btn-primary" href="{{route('app.create')}}">{{ __('custom.Add App') }}</a>
+    </div>
     <div class="card-body">
       <h4 class="card-title">{{ __('custom.Apps') }}</h4>
       <p class="card-description">

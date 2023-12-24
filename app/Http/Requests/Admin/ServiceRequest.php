@@ -21,19 +21,29 @@ class ServiceRequest extends FormRequest
      */
     public function rules(): array
     {
-        if($this->method() == 'PUT' || $this->method() == 'PATCH')
-        {
-            $imageRule = 'nullable|mimes:jpg,png,jpeg,gif,svg';
-        }else{
-            $imageRule = 'required|mimes:jpg,png,jpeg,gif,svg';
-
-        }
+     
         return [
-            'logo' => $imageRule,
+            'logo' => 'required|string',
             'name_en' => 'required|string',
             'name_ar' => 'required|string',
             'description_en' => 'required|string',
             'description_ar' => 'required|string'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+        'name_en.required' => 'name_en is required',
+        'name_en.string' => 'name_en must be string',
+        'name_ar.required' => 'name_ar is required',
+        'name_ar.string' => 'name_ar must be string',
+        'description_en.required' => 'description_en is required',
+        'description_en.string' => 'description_en must be string',
+        'description_ar.required' => 'description_ar is required',
+        'description_ar.string' => 'description_ar must be string',
+        'logo.required' => __('custom.logo is required'),
+        'logo.string' => __('custom.logo must be string'),
         ];
     }
 }

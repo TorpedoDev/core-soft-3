@@ -35,4 +35,24 @@ class AppRequest extends FormRequest
             'image' => $imageRule
         ];
     }
+
+    public function messages()
+    {
+        return [
+        'name_en.required' => __('custom.name_en is required'),
+        'name_en.string' => __('custom.name_en must be string'),
+        'name_en.max' => __('custom.name_en must be less than 255'),
+        'name_ar.required' => __('custom.name_ar is required'),
+        'name_ar.string' => __('custom.name_ar must be string'),
+        'name_ar.max' => __('custom.name_ar must be less than 255'),
+        'description_en.required' => __('custom.description_en is required'),
+        'description_en.string' => __('custom.description_en must be string'),
+        'description_en.max' => __('custom.description_en must be less than 255'),
+        'description_ar.required' => __('custom.description_ar is required'),
+        'description_ar.string' => __('custom.description_ar must be string'),
+        'description_ar.max' => __('custom.description_ar must be less than 255'),
+        'image.required' => __('custom.image is required'),
+        'image.mimes' => __('custom.image must be image'),
+        ];
+    }
 }

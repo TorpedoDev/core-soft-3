@@ -49,16 +49,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">{{ __('custom.logo') }}</label>
-                                    <input type="file" name="logo" class="form-control"
+                                    <input type="text" value="{{$service->logo}}" name="logo" class="form-control"
                                         placeholder="{{ __('custom.logo') }}">
                                     @error('logo')
                                         <div class="text-danger"> {{ $message }} </div>
                                     @enderror
                                 </div>
                                 <br>
-                                <img src="{{ asset('images/' . $service->logo) }}" width="100px" height="100px"
-                                    alt="">
-                                <br><br>
                                 <button type="submit" class="btn btn-primary mr-2">{{ __('custom.Edit') }}</button>
                             </form>
                         </div>

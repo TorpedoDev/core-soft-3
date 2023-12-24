@@ -6,6 +6,9 @@
 @endif
 <div class="col-lg-12 grid-margin stretch-card">
   <div class="card">
+    <div class="card-header">        
+      <a style="float: right" class="btn btn-primary" href="{{route('service.create')}}">{{ __('custom.Add Service') }}</a>
+    </div>
     <div class="card-body">
       <h4 class="card-title">{{ __('custom.Services') }}</h4>
       <p class="card-description">
@@ -50,7 +53,7 @@
                 {{ ++$key }}
               </td>
               <td class="py-1">
-                <img src="{{ asset('images/'.$service->logo) }}" width="100px" height="100px" alt="">
+                {{ $service->logo }} 
                </td>
                <td style="width:20px">
                  {{ $service->name_ar }}

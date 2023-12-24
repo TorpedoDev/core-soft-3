@@ -33,16 +33,18 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputUsername1">{{ __('custom.description_ar') }}</label>
-                                    <input type="text" value="{{ $pricing->description_ar }}" name="description_ar" class="form-control"
-                                        placeholder="{{ __('custom.description_ar') }}">
+
+<textarea placeholder="{{ __('custom.description_ar') }}" name="description_ar" class="form-control"  cols="30" rows="10">{{ $pricing->description_ar }}</textarea>
+
                                     @error('description_ar')
                                         <div class="text-danger"> {{ $message }} </div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">{{ __('custom.description_en') }}</label>
-                                    <input type="text" value="{{ $pricing->description_en }}" name="description_en" class="form-control"
-                                        placeholder="{{ __('custom.description_en') }}">
+
+<textarea placeholder="{{ __('custom.description_en') }}" name="description_en" class="form-control" id="" cols="30" rows="10">{{ $pricing->description_en }}</textarea>
+
                                     @error('description_en')
                                         <div class="text-danger"> {{ $message }} </div>
                                     @enderror
@@ -57,16 +59,14 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">{{ __('custom.logo') }}</label>
-                                    <input type="file" name="logo" class="form-control"
+                                    <input type="text" value="{{$pricing->logo}}" name="logo" class="form-control"
                                         placeholder="{{ __('custom.logo') }}">
                                     @error('logo')
                                         <div class="text-danger"> {{ $message }} </div>
                                     @enderror
                                 </div>
                                 <br>
-                                <img src="{{ asset('images/' . $pricing->logo) }}" width="100px" height="100px"
-                                    alt="">
-                                <br><br>
+                          
                                 <button type="submit" class="btn btn-primary mr-2">{{ __('custom.Edit') }}</button>
                             </form>
                         </div>

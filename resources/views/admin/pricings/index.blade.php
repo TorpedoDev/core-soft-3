@@ -6,6 +6,9 @@
 @endif
 <div class="col-lg-12 grid-margin stretch-card">
   <div class="card">
+    <div class="card-header">        
+      <a style="float: right" class="btn btn-primary" href="{{route('pricing.create')}}">{{ __('custom.Add Pricing') }}</a>
+    </div>
     <div class="card-body">
       <h4 class="card-title">{{ __('custom.Pricing') }}</h4>
       <p class="card-description">
@@ -34,6 +37,9 @@
                 {{ __('custom.description_en') }}
               </th>
               <th>
+                {{ __('custom.price') }}
+              </th>
+              <th>
                 {{ __('custom.Select Status') }}
               </th>
               <th>
@@ -53,7 +59,7 @@
                 {{ ++$key }}
               </td>
               <td class="py-1">
-                <img src="{{ asset('images/'.$pricing->logo) }}" width="100px" height="100px" alt="">
+                {{ $pricing->logo }}
                </td>
                <td style="width:20px">
                  {{ $pricing->name_ar }}
@@ -67,6 +73,9 @@
                <td>
                  {{ $pricing->description_en }}
                </td>
+               <td>
+                {{ $pricing->price }}
+              </td>
                <td>
                  {{ $pricing->selected == 1 ? __('custom.Selected') : __('custom.Unselected')  }}
                </td>

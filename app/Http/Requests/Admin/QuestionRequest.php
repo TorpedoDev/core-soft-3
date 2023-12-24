@@ -28,4 +28,18 @@ class QuestionRequest extends FormRequest
             'answer_ar' => 'required|string',
         ];
     }
+
+    public function messages()
+    {
+        return [
+    
+            'question_en.required' => __('custom.Question_en is required'),
+            'question_en.string' => __('custom.Question_en must be string'),
+            'question_ar.required' => __('custom.Question_ar is required'),
+            'question_ar.string' => __('custom.Question_ar must be string'),
+            'answer_ar.required' => __('custom.answer_ar is required'),
+            'answer_ar.string' => __('custom.answer_ar must be string'),
+
+        ];
+    }
 }

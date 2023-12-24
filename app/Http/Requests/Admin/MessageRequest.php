@@ -28,4 +28,20 @@ class MessageRequest extends FormRequest
             'message' => 'required|string'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => __('custom.Name is required'),
+            'name.string' => __('custom.Name must be text'),
+            'name.max' => __('custom.Name must be less than 60'),
+            'email.required' => __('custom.email is required'),
+            'email.email' => __('custom.email must be valid'),
+            'email.max' => __('custom.email must be less than 80 charachter'),
+            'subject.required' => __('custom.subject is required'),
+            'subject.string' => __('custom.subject must be text'),
+            'message.required' => __('custom.message is required'),
+            'message.string' => __('custom.message must be text'),
+        ];
+    }
 }

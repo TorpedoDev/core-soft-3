@@ -6,10 +6,13 @@
 @endif
 <div class="col-lg-12 grid-margin stretch-card">
   <div class="card">
+    <div class="card-header">        
+      <a style="float: right" class="btn btn-primary" href="{{route('blog.create')}}">{{ __('custom.Add Blog') }}</a>
+    </div>
     <div class="card-body">
-      <h4 class="card-title">{{ __('custom.Questions') }}</h4>
+      <h4 class="card-title">{{ __('custom.Blogs') }}</h4>
       <p class="card-description">
-       {{ __('custom.All Questions') }}
+       {{ __('custom.All Blogs') }}
       </p>
       <div class="table-responsive pt-3">
         <table class="table table-bordered table-responsive">

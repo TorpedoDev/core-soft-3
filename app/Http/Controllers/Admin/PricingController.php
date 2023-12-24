@@ -31,14 +31,8 @@ class PricingController extends Controller
      */
     public function store(PricingRequest $request)
     {
-        $data = $request->validated();
-        $imageName = time().'.'.$request->logo->extension();
-
-        // Public Folder
-        $request->logo->move(public_path('images'), $imageName);
-        $data['logo'] = $imageName;
-         
-        Pricing::create($data);
+    
+        Pricing::create($request->validated());
         return redirect()->route('pricing.index')->with('success' , __('custom.Pricing added successfully'));    
     }
 
@@ -65,26 +59,9 @@ class PricingController extends Controller
     public function update(PricingRequest $request, string $id)
     {
         $pricing = Pricing::findOrFail($id);
-        $data = $request->validated();
-
-        if($request->has('logo'))
-        {
-            if(file_exists(public_path('images/'.$pricing->logo))){
-
-            unlink(public_path('images/'.$pricing->logo));
-            }
-
-            $imageName = time().'.'.$request->logo->extension();
-
-            // Public Folder
-            $request->logo->move(public_path('images'), $imageName);
-
-            $data['logo'] = $imageName;
-    }
 
 
-
-    $pricing->update($data);
+    $pricing->update($request->validated());
 
     return redirect()->route('pricing.index')->with('success' , __('custom.Pricing updated successfully'));    
 
@@ -97,11 +74,6 @@ class PricingController extends Controller
     public function destroy(string $id)
     {
         $pricing = Pricing::findOrFail($id);
-        if(file_exists(public_path('images/'.$pricing->logo)))
-        {
-            unlink(public_path('images/'. $pricing->logo));
-
-        }
         $pricing->delete();
         return redirect()->route('pricing.index')->with('success' , __('custom.Pricing deleted successfully'));    
 

@@ -8,14 +8,14 @@
         <div class="container position-relative">
             <div class="row gy-5" data-aos="fade-in">
                 <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start">
-                    <h2>Welcome to <span>Impact</span></h2>
+                    <h2>{{__('custom.Welcome to')}} <span>{{__('custom.coresoft')}}</span></h2>
                     <p>Sed autem laudantium dolores. Voluptatem itaque ea consequatur eveniet. Eum quas beatae cumque eum
                         quaerat.</p>
                     <div class="d-flex justify-content-center justify-content-lg-start">
                         <a href="#about" class="btn-get-started">Get Started</a>
-                        <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ"
+                        <a href="#"
                             class="glightbox btn-watch-video d-flex align-items-center"><i
-                                class="bi bi-play-circle"></i><span>Watch Video</span></a>
+                                class="bi bi-play-circle"></i><span>{{__('custom.Watch Video')}}</span></a>
                     </div>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2">
@@ -35,7 +35,14 @@
                                     <i class="{{ $section->logo }}"></i>
                                     {{-- {{$section->logo}} --}}
                                 </div>
-                                <h4 class="title"><a href="" class="stretched-link">{{ $section->title_ar }}</a>
+                                <h4 class="title"><a href="" class="stretched-link">
+                                @if (app()->getLocale() == 'en')
+                                {{ $section->title_en }}
+@else
+{{ $section->title_ar }}
+
+                                @endif
+                                </a>
                                 </h4>
                             </div>
                         </div><!--End Icon Box -->
@@ -71,13 +78,13 @@
 
     <main id="main">
 
-        @if (count($about) > 0)
+        @if (! is_null($about))
             <!-- ======= About Us Section ======= -->
             <section id="about" class="about">
                 <div class="container" data-aos="fade-up">
 
                     <div class="section-header">
-                        <h2>About Us</h2>
+                        <h2>{{__('custom.About Us')}}</h2>
                         <p>Aperiam dolorum et et wuia molestias qui eveniet numquam nihil porro incidunt dolores placeat
                             sunt id nobis omnis tiledo stran delop</p>
                     </div>
@@ -192,10 +199,11 @@
             </div>
         </section><!-- End Stats Counter Section -->
 
+        @if (! is_null($about))
         <!-- ======= Call To Action Section ======= -->
         <section id="call-to-action" class="call-to-action">
             <div class="container text-center" data-aos="zoom-out">
-                <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox play-btn"></a>
+                <a href="{{$about->video_link}}" class="glightbox play-btn"></a>
                 <h3>Call To Action</h3>
                 <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                     Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
@@ -203,14 +211,14 @@
                 <a class="cta-btn" href="#">Call To Action</a>
             </div>
         </section><!-- End Call To Action Section -->
-
+@endif
         @if (count($services) > 0)
             <!-- ======= Our Services Section ======= -->
             <section id="services" class="services sections-bg">
                 <div class="container" data-aos="fade-up">
 
                     <div class="section-header">
-                        <h2>Our Services</h2>
+                        <h2>{{__('custom.Our Services')}}</h2>
                         <p>Aperiam dolorum et et wuia molestias qui eveniet numquam nihil porro incidunt dolores placeat
                             sunt id nobis omnis tiledo stran delop</p>
                     </div>
@@ -220,7 +228,7 @@
                             <div class="col-lg-4 col-md-6">
                                 <div class="service-item  position-relative">
                                     <div class="icon">
-                                        <i class="bi bi-activity"></i>
+                                        <i class="{{$service->logo}}"></i>
                                     </div>
                                     <h3>
                                         @if (app()->getLocale() == 'en')
@@ -236,7 +244,7 @@
                                             {{ substr($service->description_ar, 0, 25) }}
                                         @endif
                                     </p>
-                                    <a href="#" class="readmore stretched-link">Read more <i
+                                    <a href="#" class="readmore stretched-link">{{__('custom.Read more')}} <i
                                             class="bi bi-arrow-right"></i></a>
                                 </div>
                             </div><!-- End Service Item -->
@@ -389,7 +397,7 @@
                 <div class="container" data-aos="fade-up">
 
                     <div class="section-header">
-                        <h2>Portfolio</h2>
+                        <h2>{{__('custom.Portfolio')}}</h2>
                         <p>Quam sed id excepturi ccusantium dolorem ut quis dolores nisi llum nostrum enim velit qui ut et
                             autem uia reprehenderit sunt deleniti</p>
                     </div>
@@ -399,13 +407,13 @@
 
                         <div>
                             <ul class="portfolio-flters">
-                                <li data-filter="*" class="filter-active">All</li>
+                                <li data-filter="*" class="filter-active">{{__('custom.All')}}</li>
                                 @if (count($mobile) > 0)
-                                    <li data-filter=".filter-mobile">Mobile</li>
+                                    <li data-filter=".filter-mobile">{{__('custom.Mobile')}}</li>
                                 @endif
 
                                 @if (count($web) > 0)
-                                    <li data-filter=".filter-web">Web</li>
+                                    <li data-filter=".filter-web">{{__('custom.Web')}}</li>
                                 @endif
 
                                 {{-- <li data-filter=".filter-branding">Branding</li>
@@ -582,7 +590,7 @@
                 <div class="container" data-aos="fade-up">
 
                     <div class="section-header">
-                        <h2>Our Team</h2>
+                        <h2>{{__('custom.Our Team')}}</h2>
                         <p>Nulla dolorum nulla nesciunt rerum facere sed ut inventore quam porro nihil id ratione ea sunt
                             quis dolorem dolore earum</p>
                     </div>
@@ -682,7 +690,7 @@
                 <div class="container" data-aos="fade-up">
 
                     <div class="section-header">
-                        <h2>Pricing</h2>
+                        <h2>{{__('custom.Pricing')}}</h2>
                         <p>Aperiam dolorum et et wuia molestias qui eveniet numquam nihil porro incidunt dolores placeat
                             sunt id nobis omnis tiledo stran delop</p>
                     </div>
@@ -699,7 +707,7 @@
                                         @endif
                                     </h3>
                                     <div class="icon">
-                                        <i class="bi bi-box"></i>
+                                        <i class="{{$pricing->logo}}"></i>
                                     </div>
                                     <h4><sup>$</sup>{{ $pricing->price }}<span> / month</span></h4>
                                     <ul>
@@ -734,7 +742,7 @@
 
                         <div class="col-lg-4">
                             <div class="content px-xl-5">
-                                <h3>Frequently Asked <strong>Questions</strong></h3>
+                                <h3>{{__('custom.Frequently Asked Questions')}}</h3>
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                     incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
@@ -746,13 +754,15 @@
 
                             <div class="accordion accordion-flush" id="faqlist" data-aos="fade-up"
                                 data-aos-delay="100">
+                                <?php $i=0; ?>
                                 @foreach ($questions as $index => $question)
+                        <?php $i++ ?>
                                     <div class="accordion-item">
                                         <h3 class="accordion-header">
                                             <button class="accordion-button collapsed" type="button"
                                                 data-bs-toggle="collapse"
-                                                data-bs-target="#faq-content-{{ ++$index }}">
-                                                <span class="num">{{ ++$index }}.</span>
+                                                data-bs-target="#faq-content-{{ $i }}">
+                                                <span class="num">{{ $i }}.</span>
                                                 @if (app()->getLocale() == 'en')
                                                     {{ $question->question_en }}
                                                 @else
@@ -760,7 +770,7 @@
                                                 @endif
                                             </button>
                                         </h3>
-                                        <div id="faq-content-{{ ++$index }}" class="accordion-collapse collapse"
+                                        <div id="faq-content-{{ $i }}" class="accordion-collapse collapse"
                                             data-bs-parent="#faqlist">
                                             <div class="accordion-body">
                                                 @if (app()->getLocale() == 'en')
@@ -844,7 +854,7 @@
                 <div class="container" data-aos="fade-up">
 
                     <div class="section-header">
-                        <h2>Recent Blog Posts</h2>
+                        <h2>{{__('custom.Recent Blog Posts')}}</h2>
                         <p>Consequatur libero assumenda est voluptatem est quidem illum et officia imilique qui vel
                             architecto accusamus fugit aut qui distinctio</p>
                     </div>
@@ -867,16 +877,16 @@
                                     </p>
 
                                     <h2 class="title">
-                                        <a href="blog-details.html">
+                                        <a href="{{route('blog.details' , $blog->id)}}">
                                             @if (app()->getLocale() == 'en')
-                                                {{ substr($blog->description_en, 0, 25) }}
+                                                {{ substr($blog->content_en, 0, 80) }}
                                             @else
-                                                {{ substr($service->description_ar, 0, 25) }}
+                                                {{ substr($blog->content_ar, 0, 80) }}
                                             @endif
                                         </a>
                                     </h2>
 
-                                    <div class="d-flex align-items-center">
+                                    {{-- <div class="d-flex align-items-center">
                                         <img src="{{ asset('front/assets/img/blog/blog-author.jpg') }}" alt=""
                                             class="img-fluid post-author-img flex-shrink-0">
                                         <div class="post-meta">
@@ -885,7 +895,7 @@
                                                 <time datetime="2022-01-01">Jan 1, 2022</time>
                                             </p>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                 </article>
                             </div><!-- End post list item -->
@@ -953,7 +963,7 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-header">
-                    <h2>Contact</h2>
+                    <h2>{{__('custom.Contact')}}</h2>
                     <p>Nulla dolorum nulla nesciunt rerum facere sed ut inventore quam porro nihil id ratione ea sunt quis
                         dolorem dolore earum</p>
                 </div>
@@ -965,7 +975,7 @@
                                 <div class="info-item d-flex">
                                     <i class="bi bi-geo-alt flex-shrink-0"></i>
                                     <div>
-                                        <h4>Location:</h4>
+                                        <h4>{{__('custom.Location')}}:</h4>
                                         <p>
                                             @if (app()->getLocale() == 'en')
                                                 {{ $informations->location_en }}
@@ -979,7 +989,7 @@
                                 <div class="info-item d-flex">
                                     <i class="bi bi-envelope flex-shrink-0"></i>
                                     <div>
-                                        <h4>Email:</h4>
+                                        <h4>{{__('custom.Email')}}:</h4>
                                         <p>
                                             {{ $informations->email }}
                                         </p>
@@ -989,7 +999,7 @@
                                 <div class="info-item d-flex">
                                     <i class="bi bi-phone flex-shrink-0"></i>
                                     <div>
-                                        <h4>Call:</h4>
+                                        <h4>{{__('custom.Call')}}:</h4>
                                         <p>
                                             {{ $informations->phone }}
                                         </p>
@@ -999,7 +1009,7 @@
                                 <div class="info-item d-flex">
                                     <i class="bi bi-clock flex-shrink-0"></i>
                                     <div>
-                                        <h4>Open Hours:</h4>
+                                        <h4>{{__('custom.Open Hours')}}:</h4>
                                         <p>
                                             @if (app()->getLocale() == 'en')
                                                 {{ $informations->open_en }}
@@ -1019,26 +1029,26 @@
                             @csrf
                             <div class="row">
                                 <div class="col-md-6 form-group">
-                                    <input type="text" name="name" class="form-control" placeholder="Your Name">
+                                    <input type="text" name="name" class="form-control" placeholder="{{__('custom.Your Name')}}">
                                     @error('name')
                                         <h6 class="text-danger">{{ $message }}</h6>
                                     @enderror
                                 </div>
                                 <div class="col-md-6 form-group mt-3 mt-md-0">
-                                    <input type="text" class="form-control" name="email" placeholder="Your Email">
+                                    <input type="text" class="form-control" name="email" placeholder="{{__('custom.Your Email')}}">
                                     @error('email')
                                         <h6 class="text-danger">{{ $message }}</h6>
                                     @enderror
                                 </div>
                             </div>
                             <div class="form-group mt-3">
-                                <input type="text" class="form-control" name="subject" placeholder="Subject">
+                                <input type="text" class="form-control" name="subject" placeholder="{{__('custom.Subject')}}">
                                 @error('subject')
                                     <h6 class="text-danger">{{ $message }}</h6>
                                 @enderror
                             </div>
                             <div class="form-group mt-3">
-                                <textarea class="form-control" name="message" rows="7" placeholder="Message"></textarea>
+                                <textarea class="form-control" name="message" rows="7" placeholder="{{__('custom.Message')}}"></textarea>
                                 @error('message')
                                     <h6 class="text-danger">{{ $message }}</h6>
                                 @enderror
@@ -1050,7 +1060,7 @@
                             {{-- </div> --}}
                             <br>
                             <div class="text-center"><button class="btn text-white" style="background-color: #008374"
-                                    type="submit">Send Message</button></div>
+                                    type="submit">{{__('custom.Send Message')}}</button></div>
                         </form>
                     </div><!-- End Contact Form -->
 

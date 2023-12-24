@@ -5,17 +5,41 @@
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1>Impact<span>.</span></h1>
+        <h1>{{__('custom.coresoft')}}<span>.</span></h1>
       </a>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#team">Team</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+              {{-- ***************************************************************88 --}}
+
+
+
+<li class="dropdown"><a href="#"><span>{{ __('custom.'.LaravelLocalization::getCurrentLocaleName()) }}</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+  <ul>
+    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+    <li>
+      
+      <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+        <img src="{{ $localeCode == 'ar' ? asset('images/eg.png') : asset('images/us.png')}}" width="30px" height="30px" alt="">
+        {{ __('custom.'.$properties['native']) }}
+      </a>
+    </li>
+    @endforeach
+
+  </ul>
+</li>
+
+
+
+{{-- **************************************************************8 --}}
+          <li><a href="#hero">{{__('custom.Home')}}</a></li>
+          <li><a href="#about">{{__('custom.About')}}</a></li>
+          <li><a href="#services">{{__('custom.Services')}}</a></li>
+          <li><a href="#portfolio">{{__('custom.Portfolio')}}</a></li>
+          <li><a href="#team">{{__('custom.Team')}}</a></li>
+          <li><a href="#recent-posts">{{__('custom.Blogs')}}</a></li>
+      
+
+          {{-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li><a href="#">Drop Down 1</a></li>
               <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
@@ -31,8 +55,15 @@
               <li><a href="#">Drop Down 3</a></li>
               <li><a href="#">Drop Down 4</a></li>
             </ul>
-          </li>
-          <li><a href="#contact">Contact</a></li>
+          </li> --}}
+          <li><a href="#contact">{{__('custom.Contact')}}</a></li>
+
+
+
+
+
+
+          
         </ul>
       </nav><!-- .navbar -->
 

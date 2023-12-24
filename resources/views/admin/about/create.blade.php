@@ -38,8 +38,7 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">{{ __('custom.imagedesc_ar') }}</label>
-                                    <input type="text" name="imagedesc_ar" class="form-control"
-                                        placeholder="{{ __('custom.imagedesc_ar') }}">
+                                    <textarea placeholder="{{ __('custom.imagedesc_ar') }}" name="imagedesc_ar" class="form-control"  cols="30" rows="10"></textarea>
                                     @error('imagedesc_ar')
                                         <div class="text-danger"> {{ $message }} </div>
                                     @enderror
@@ -48,8 +47,8 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">{{ __('custom.imagedesc_en') }}</label>
-                                    <input type="text" name="imagedesc_en" class="form-control"
-                                        placeholder="{{ __('custom.imagedesc_en') }}">
+
+                            <textarea placeholder="{{ __('custom.imagedesc_en') }}" name="imagedesc_en" class="form-control" id="" cols="30" rows="10"></textarea>
                                     @error('imagedesc_en')
                                         <div class="text-danger"> {{ $message }} </div>
                                     @enderror
@@ -59,8 +58,8 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">{{ __('custom.videodesc_ar') }}</label>
-                                    <input type="text" name="videodesc_ar" class="form-control"
-                                        placeholder="{{ __('custom.videodesc_ar') }}">
+
+                                    <textarea placeholder="{{ __('custom.videodesc_ar') }}" name="videodesc_ar" class="form-control" id="" cols="30" rows="10"></textarea>
                                     @error('videodesc_ar')
                                         <div class="text-danger"> {{ $message }} </div>
                                     @enderror
@@ -70,26 +69,12 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">{{ __('custom.videodesc_en') }}</label>
-                                    <input type="text" name="videodesc_en" class="form-control"
-                                        placeholder="{{ __('custom.videodesc_en') }}">
+
+<textarea placeholder="{{ __('custom.videodesc_en') }}" name="videodesc_en" class="form-control" id="" cols="30" rows="10"></textarea>
                                     @error('videodesc_en')
                                         <div class="text-danger"> {{ $message }} </div>
                                     @enderror
                                 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                                 <div class="form-group">
                                     <label for="exampleInputUsername1">{{ __('custom.video_link') }}</label>

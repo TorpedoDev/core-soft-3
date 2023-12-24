@@ -13,7 +13,7 @@ use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\TechnologyController;
 use App\Http\Controllers\Front\HomeController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\ProfileController;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Architecture\Services\ServiceContainer;
 
@@ -82,9 +82,14 @@ Route::middleware('auth')->group(function () {
     Route::resource('/information' , InformationController::class);
     Route::get('/information/changestatus/{id}' , [InformationController::class , 'changeStatus'])->name('information.changestatus');
 
+    Route::get('/profile' , [ProfileController::class , 'profile'])->name('admin.profile');
+    Route::post('/changedata' , [ProfileController::class , 'changeData'])->name('admin.changeData');
+    Route::post('/changePassword' , [ProfileController::class , 'updatePass'])->name('admin.updatePass');
 });
 
 require __DIR__.'/auth.php';
 
+
 Route::post('/messages' , [MessageController::class , 'store'])->name('messages.store');
 Route::get('/home' , [HomeController::class , 'home']);
+Route::get('/blog/{blog}' , [HomeController::class , 'showBlog'])->name('blog.details');

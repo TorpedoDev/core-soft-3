@@ -41,17 +41,20 @@
 <body>
 
   <!-- ======= Header ======= -->
+  {{-- @if ( isset($informations) && !is_null($informations) )
+  
   <section id="topbar" class="topbar d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
-        <i class="bi bi-envelope d-flex align-items-center"><a href="/cdn-cgi/l/email-protection#72111d1c0613110632170a131f021e175c111d1f"><span class="__cf_email__" data-cfemail="b7d4d8d9c3d6d4c3f7d2cfd6dac7dbd299d4d8da">[email&#160;protected]</span></a></i>
-        <i class="bi bi-phone d-flex align-items-center ms-4"><span>+1 5589 55488 55</span></i>
+        <i class="bi bi-envelope d-flex align-items-center">{{$informations->email}}</i>
+        <i class="bi bi-phone d-flex align-items-center ms-4"><span>{{$informations->phone}}</span></i>
       </div>
-      <div class="social-links d-none d-md-flex align-items-center">
+      {{-- <div class="social-links d-none d-md-flex align-items-center">
         <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
         <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
         <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
         <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
-      </div>
+      </div> 
     </div>
   </section><!-- End Top Bar -->
+  @endif --}}

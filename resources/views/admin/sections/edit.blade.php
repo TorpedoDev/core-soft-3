@@ -49,7 +49,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">{{ __('custom.logo') }}</label>
-                                    <input type="text" name="logo" class="form-control"
+                                    <input type="text" value="{{$section->logo}}" name="logo" class="form-control"
                                         placeholder="{{ __('custom.logo') }}">
                                     @error('logo')
                                         <div class="text-danger"> {{ $message }} </div>

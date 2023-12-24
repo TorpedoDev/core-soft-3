@@ -33,4 +33,27 @@ class TeamRequest extends FormRequest
              'instagram' => 'nullable|url'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'image.mimes' => __('custom.image must be image'),
+            'name_en.required' => __('custom.name_en is required'),
+            'name_en.string' => __('custom.name_en must be string'),
+            'name_en.max' => __('custom.name_en must be less than 255'),
+            'name_ar.required' => __('custom.name_ar is required'),
+            'name_ar.string' => __('custom.name_ar must be string'),
+            'name_ar.max' => __('custom.name_ar must be less than 255'),
+            'position_en.required' => __('custom.position_en is required'),
+            'position_en.string' => __('custom.position_en must be string'),
+            'position_en.max' => __('custom.position_en must be less than 255'),
+            'position_ar.required' => __('custom.position_ar is required'),
+            'position_ar.string' => __('custom.position_ar must be string'),
+            'position_ar.max' => __('custom.position_ar must be less than 255'),
+            'facebook.url' => __('custom.Text must be url'),
+            'twitter.url' => __('custom.Text must be url'),
+            'linkedin.url' => __('custom.Text must be url'),
+            'instagram.url' => __('custom.Text must be url'),
+        ];
+    }
 }

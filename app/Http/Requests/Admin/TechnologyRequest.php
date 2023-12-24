@@ -33,4 +33,12 @@ class TechnologyRequest extends FormRequest
             'logo' => $imageRule
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'logo.required' => __('custom.image is required'),
+            'logo.mimes' => __('custom.image must be image'),
+        ];
+    }
 }

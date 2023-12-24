@@ -11,22 +11,22 @@
                             <p class="card-description">
                                 {{ __('custom.Edit About') }}
                             </p>
-                            <form method="POST" action="{{ route('about.update' , $about->id) }}" class="forms-sample"
+                            <form method="POST" action="{{ route('about.update', $about->id) }}" class="forms-sample"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group">
                                     <label for="exampleInputUsername1">{{ __('custom.title_in_ar') }}</label>
-                                    <input value="{{ $about->title_ar }}" type="text" name="title_ar" class="form-control"
-                                        placeholder="{{ __('custom.title_in_ar') }}">
+                                    <input value="{{ $about->title_ar }}" type="text" name="title_ar"
+                                        class="form-control" placeholder="{{ __('custom.title_in_ar') }}">
                                     @error('title_ar')
                                         <div class="text-danger"> {{ $message }} </div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">{{ __('custom.title_in_en') }}</label>
-                                    <input type="text" value="{{ $about->title_en }}" name="title_en" class="form-control"
-                                        placeholder="{{ __('custom.title_in_en') }}">
+                                    <input type="text" value="{{ $about->title_en }}" name="title_en"
+                                        class="form-control" placeholder="{{ __('custom.title_in_en') }}">
                                     @error('title_en')
                                         <div class="text-danger"> {{ $message }} </div>
                                     @enderror
@@ -39,8 +39,9 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">{{ __('custom.imagedesc_ar') }}</label>
-                                    <input type="text" value="{{ $about->imagedesc_ar }}" name="imagedesc_ar" class="form-control"
-                                        placeholder="{{ __('custom.imagedesc_ar') }}">
+
+                                    <textarea placeholder="{{ __('custom.imagedesc_ar') }}" name="imagedesc_ar" class="form-control" id=""
+                                        cols="30" rows="10">{{ $about->imagedesc_ar }}</textarea>
                                     @error('imagedesc_ar')
                                         <div class="text-danger"> {{ $message }} </div>
                                     @enderror
@@ -49,8 +50,9 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">{{ __('custom.imagedesc_en') }}</label>
-                                    <input type="text" value="{{ $about->imagedesc_en}}" name="imagedesc_en" class="form-control"
-                                        placeholder="{{ __('custom.imagedesc_en') }}">
+
+                                    <textarea placeholder="{{ __('custom.imagedesc_en') }}" name="imagedesc_en" class="form-control" id=""
+                                        cols="30" rows="10">{{ $about->imagedesc_en }}</textarea>
                                     @error('imagedesc_en')
                                         <div class="text-danger"> {{ $message }} </div>
                                     @enderror
@@ -60,8 +62,11 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">{{ __('custom.videodesc_ar') }}</label>
-                                    <input type="text" value="{{ $about->videodesc_ar }}" name="videodesc_ar" class="form-control"
-                                        placeholder="{{ __('custom.videodesc_ar') }}">
+
+                                    <textarea placeholder="{{ __('custom.videodesc_ar') }}" name="videodesc_ar" class="form-control" cols="30"
+                                        rows="10">{{ $about->videodesc_ar }}</textarea>
+
+
                                     @error('videodesc_ar')
                                         <div class="text-danger"> {{ $message }} </div>
                                     @enderror
@@ -71,8 +76,10 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">{{ __('custom.videodesc_en') }}</label>
-                                    <input type="text" value="{{ $about->videodesc_en }}" name="videodesc_en" class="form-control"
-                                        placeholder="{{ __('custom.videodesc_en') }}">
+
+                                    <textarea placeholder="{{ __('custom.videodesc_en') }}" name="videodesc_en" class="form-control" cols="30"
+                                        rows="10">{{ $about->videodesc_en }}</textarea>
+
                                     @error('videodesc_en')
                                         <div class="text-danger"> {{ $message }} </div>
                                     @enderror
@@ -80,27 +87,15 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
                                 <div class="form-group">
                                     <label for="exampleInputUsername1">{{ __('custom.video_link') }}</label>
-                                    <input type="text" value="{{ $about->video_link }}" name="video_link" class="form-control"
-                                        placeholder="{{ __('custom.video_link') }}">
+                                    <input type="text" value="{{ $about->video_link }}" name="video_link"
+                                        class="form-control" placeholder="{{ __('custom.video_link') }}">
                                     @error('video_link')
                                         <div class="text-danger"> {{ $message }} </div>
                                     @enderror
                                 </div>
-                               
+
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">{{ __('custom.Image') }}</label>
                                     <input type="file" name="image" class="form-control"

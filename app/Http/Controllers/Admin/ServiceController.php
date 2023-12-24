@@ -31,19 +31,13 @@ class ServiceController extends Controller
      */
     public function store(ServiceRequest $request)
     {
-        $imageName = time().'.'.$request->logo->extension();
+        // $imageName = time().'.'.$request->logo->extension();
 
-        // Public Folder
-        $request->logo->move(public_path('images'), $imageName);
+        // // Public Folder
+        // $request->logo->move(public_path('images'), $imageName);
         
          
-        Service::create([
-            'name_en' => $request->name_en, 
-            'name_ar' => $request->name_ar , 
-            'logo' => $imageName , 
-            'description_ar' => $request->description_ar, 
-            'description_en' => $request->description_en , 
-        ]);
+        Service::create($request->validated());
         return redirect()->route('service.index')->with('success' , __('custom.Service added successfully'));  
     }
 
@@ -70,31 +64,8 @@ class ServiceController extends Controller
     public function update(ServiceRequest $request, string $id)
     {
         $service = Service::findOrFail($id);
-        if($request->has('logo'))
-        {
-            unlink(public_path('images/'.$service->logo));
-
-            $imageName = time().'.'.$request->logo->extension();
-
-            // Public Folder
-            $request->logo->move(public_path('images'), $imageName);
-    
-            $service->update([
-                $service->name_en => $request->name_en, 
-                $service->name_ar => $request->name_ar , 
-                $service->logo => $imageName , 
-                $service->description_ar => $request->description_ar, 
-                $service->description_en => $request->description_en , 
-            ]);
-        }else{
-
-            $service->update([
-                $service->name_en => $request->name_en, 
-                $service->name_ar => $request->name_ar , 
-                $service->description_ar => $request->description_ar, 
-                $service->description_en => $request->description_en , 
-            ]);
-        }
+            $service->update($request->validated());
+        
         return redirect()->route('service.index')->with('success' , __('custom.Service updated successfully'));  
     }
 
@@ -104,11 +75,6 @@ class ServiceController extends Controller
     public function destroy(string $id)
     {
         $service = Service::findOrFail($id);
-        if(file_exists(public_path('images/'.$service->logo)))
-        {
-            unlink(public_path('images/'. $service->logo));
-
-        }
         $service->delete();
         return redirect()->route('service.index')->with('success' , __('custom.Service deleted successfully'));  
 

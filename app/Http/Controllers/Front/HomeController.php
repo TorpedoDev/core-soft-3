@@ -22,7 +22,7 @@ class HomeController extends Controller
     public function home()
     {
         $sections = Section::where('status' , 1)->take(4)->get();
-        $about = About::where('status' , 1)->latest()->get();
+        $about = About::where('status' , 1)->latest()->first();
         $technologies = Technology::where('status' , 1)->get();
         $services =Service::where('status' , 1)->get();
         $mobile = App::where('status' , 1)->where('type' , 'mobile')->get();
@@ -37,4 +37,11 @@ class HomeController extends Controller
         return view('front.home' , compact('sections' , 'about' , 'technologies' , 'services' , 'mobile' , 'web' , 'members' , 'pricings' , 'questions' , 'blogs' , 'informations'));
 
     }
+
+
+    public function showBlog(Blog $blog)
+    {
+        return view('front.showblog' , compact('blog'));
+    }
+ 
 }

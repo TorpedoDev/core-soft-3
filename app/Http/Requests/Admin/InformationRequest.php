@@ -30,4 +30,21 @@ class InformationRequest extends FormRequest
              'open_en' => 'required|string'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'phone.required' => __('custom.phone is required'),
+            'email.required' => __('custom.email is required'),
+            'email.email' => __('custom.email must be valid'),
+            'location_ar.required' => __('location_ar is required'),
+            'location_ar.string' => __('location_ar must be text'),
+            'location_en.required' => __('location_en is required'),
+            'location_en.string' => __('location_en must be text'),
+            'open_ar.required' => __('open_ar is required'),
+            'open_ar.string' => __('open_ar must be text'),
+            'open_en.required' => __('open_en is required'),
+            'open_en.string' => __('open_en must be text'),
+        ];
+    }
 }

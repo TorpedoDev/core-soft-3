@@ -32,16 +32,18 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputUsername1">{{ __('custom.content_in_ar') }}</label>
-                                    <input type="text" name="content_ar" class="form-control"
-                                        placeholder="{{ __('custom.content_in_ar') }}">
+                                    <textarea class="form-control" name="content_ar" placeholder="{{ __('custom.content_in_ar') }}" cols="30"
+                                        rows="10"></textarea>
+
                                     @error('content_ar')
                                         <div class="text-danger"> {{ $message }} </div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">{{ __('custom.content_in_en') }}</label>
-                                    <input type="text" name="content_en" class="form-control"
-                                        placeholder="{{ __('custom.content_in_en') }}">
+                                    <textarea class="form-control" name="content_en" placeholder="{{ __('custom.content_in_en') }}" cols="30"
+                                        rows="10"></textarea>
+
                                     @error('content_en')
                                         <div class="text-danger"> {{ $message }} </div>
                                     @enderror

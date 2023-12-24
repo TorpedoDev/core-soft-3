@@ -5,7 +5,7 @@
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-info">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span>Impact</span>
+            <span>{{__('custom.coresoft')}}</span>
           </a>
           <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
           <div class="social-links d-flex mt-4">
@@ -19,15 +19,16 @@
         <div class="col-lg-2 col-6 footer-links">
           <h4>Useful Links</h4>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
+            <li><a href="#hero">{{__('custom.Home')}}</a></li>
+            <li><a href="#about">{{__('custom.About')}}</a></li>
+            <li><a href="#services">{{__('custom.Services')}}</a></li>
+            <li><a href="#portfolio">{{__('custom.Portfolio')}}</a></li>
+            <li><a href="#team">{{__('custom.Team')}}</a></li>
+            <li><a href="#recent-posts">{{__('custom.Blogs')}}</a></li>
           </ul>
         </div>
 
-        <div class="col-lg-2 col-6 footer-links">
+        {{-- <div class="col-lg-2 col-6 footer-links">
           <h4>Our Services</h4>
           <ul>
             <li><a href="#">Web Design</a></li>
@@ -36,26 +37,33 @@
             <li><a href="#">Marketing</a></li>
             <li><a href="#">Graphic Design</a></li>
           </ul>
-        </div>
-
+        </div> --}}
+        @if (!is_null($informations))
         <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-          <h4>Contact Us</h4>
+          <h4>{{__('custom.Contact')}}</h4>
           <p>
-            A108 Adam Street <br>
-            New York, NY 535022<br>
-            United States <br><br>
-            <strong>Phone:</strong> +1 5589 55488 55<br>
-            <strong>Email:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4a23242c250a2f322b273a262f64292527">[email&#160;protected]</a><br>
+            {{__('custom.location')}} :
+            @if (app()->getLocale() == 'en')
+            {{ $informations->location_en }}
+        @else
+            {{ $informations->location_ar }}
+        @endif 
+        <br>
+        <br>
+            <strong>{{__('custom.Call')}}:</strong> {{ $informations->phone }}
+            <br>
+            <strong>{{__('custom.Email')}}:</strong> {{ $informations->email }}
+            <br>
           </p>
 
         </div>
-
+@endif
       </div>
     </div>
 
     <div class="container mt-4">
       <div class="copyright">
-        &copy; Copyright <strong><span>Impact</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>{{__('custom.coresoft')}}</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->

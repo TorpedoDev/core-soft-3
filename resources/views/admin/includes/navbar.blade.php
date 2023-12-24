@@ -1,5 +1,5 @@
 <!-- partial:partials/_navbar.html -->
-<nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+<nav  class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
       <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="{{ asset('admin/images/logo.svg') }}" class="mr-2" alt="logo"/></a>
       <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{ asset('admin/images/logo-mini.svg') }}" alt="logo"/></a>
@@ -9,7 +9,7 @@
         <span class="icon-menu"></span>
       </button>
       <ul class="navbar-nav mr-lg-2">
-        <li class="nav-item nav-search d-none d-lg-block">
+        {{-- <li class="nav-item nav-search d-none d-lg-block">
           <div class="input-group">
             <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
               <span class="input-group-text" id="search">
@@ -18,10 +18,10 @@
             </div>
             <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
           </div>
-        </li>
+        </li> --}}
       </ul>
       <ul class="navbar-nav navbar-nav-right">
-        <li class="nav-item dropdown">
+        {{-- <li class="nav-item dropdown">
           <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
             <i class="icon-bell mx-0"></i>
             <span class="count"></span>
@@ -68,27 +68,55 @@
               </div>
             </a>
           </div>
+        </li> --}}
+
+        {{-- ********************************************* --}}
+
+       
+        <li class="nav-item dropdown">
+          <a class="nav-link count-indicator dropdown-toggle" id="languageDropdown" href="#" data-toggle="dropdown">
+            <h6> {{  __('custom.'.LaravelLocalization::getCurrentLocaleName()) }}</h6>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="languageDropdown">
+            <p class="mb-0 font-weight-normal float-left dropdown-header">{{__('custom.Languages')}}</p>
+            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+            <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" class="dropdown-item preview-item">
+                  <img src="{{ $localeCode == 'ar' ? asset('images/eg.png') : asset('images/us.png')}}" width="30px" height="30px" alt="">
+              <div class="preview-item-content">
+                <h6 class="preview-subject font-weight-normal">{{ __('custom.'.$properties['native']) }}
+                </h6>
+              </div>
+            </a>
+         @endforeach
+          </div>
         </li>
+
+
+        {{-- ********************************************* --}}
         <li class="nav-item nav-profile dropdown">
           <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-            <img src="{{ asset('admin/images/faces/face28.jpg') }}" alt="profile"/>
+            <img src="{{ asset('images/avatar.png') }}" alt="profile"/>
           </a>
           <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-            <a class="dropdown-item">
+            <a href="{{route('admin.profile')}}" class="dropdown-item">
               <i class="ti-settings text-primary"></i>
-              Settings
+              {{__('custom.Settings')}}
             </a>
-            <a class="dropdown-item">
+            <a href="#"  onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();" class="dropdown-item">
               <i class="ti-power-off text-primary"></i>
-              Logout
+              {{__('custom.Logout')}}
             </a>
           </div>
         </li>
-        <li class="nav-item nav-settings d-none d-lg-flex">
+        <form id="logout-form" method="POST" action="{{route('logout')}}"  class="d-none">
+          @csrf
+        </form>
+        {{-- <li class="nav-item nav-settings d-none d-lg-flex">
           <a class="nav-link" href="#">
             <i class="icon-ellipsis"></i>
           </a>
-        </li>
+        </li> --}}
       </ul>
       <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
         <span class="icon-menu"></span>
@@ -98,7 +126,7 @@
   <!-- partial -->
   <div class="container-fluid page-body-wrapper">
     <!-- partial:partials/_settings-panel.html -->
-    <div class="theme-setting-wrapper">
+    {{-- <div class="theme-setting-wrapper">
       <div id="settings-trigger"><i class="ti-settings"></i></div>
       <div id="theme-settings" class="settings-panel">
         <i class="settings-close ti-close"></i>
@@ -115,8 +143,8 @@
           <div class="tiles default"></div>
         </div>
       </div>
-    </div>
-    <div id="right-sidebar" class="settings-panel">
+    </div> --}}
+    {{-- <div id="right-sidebar" class="settings-panel">
       <i class="settings-close ti-close"></i>
       <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
         <li class="nav-item">
@@ -265,4 +293,4 @@
         </div>
         <!-- chat tab ends -->
       </div>
-    </div>
+    </div> --}}

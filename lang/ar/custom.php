@@ -317,6 +317,7 @@ return [
      'Your Name' => 'اسمك',
      'Your Email' => 'بريدك الالكتروني',
      'location' => 'العنوان',
+     'There is no messages' => 'عفو... لا توجد رسائل',
 
 
 ];

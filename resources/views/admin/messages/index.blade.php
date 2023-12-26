@@ -1,4 +1,4 @@
-@extends('admin.admin')
+{{-- @extends('admin.admin')
 @section('content')
 
 @if(session('success'))
@@ -83,4 +83,73 @@
 
 
 
+@endsection --}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@extends('admin.admin')
+@section('content')
+
+<div class="container">
+  @if (session('success'))
+  <div class="text-center alert alert-success">{{ session('success') }}</div>
+@endif
+@if(isset($messages) && !empty($messages) && count($messages) > 0)
+  @foreach ($messages as $msg)
+      <div class="card">
+        
+          <br>
+          <div style="justify-content: center" class="card-body">
+              <p>
+                  <strong> {{ __('custom.Name') }} </strong> : {{ $msg->name }}
+              </p>
+              <p>
+                  <strong> {{ __('custom.Email') }} </strong> : {{ $msg->email }}
+              </p>
+              <br>
+
+              <p>
+                  <strong>{{ __('custom.Subject') }} </strong> : {{ $msg->subject }}
+              </p>
+              <p>
+                  <strong> {{ __('custom.Message') }} </strong> : {{ $msg->message }}
+
+              </p>
+          </div>
+          <div class="card-footer">
+              <div class="row">
+                 
+                  <div class="col-md-4">
+                      <form action="{{ route('messages.destroy', $msg->id) }}" method="post">
+                          @method('delete')
+                          @csrf
+                          <button class="btn btn-danger" type="submit"
+                              onclick="return confirm('{{ __('custom.Are you already want to delete ?') }}')">
+                              {{ __('custom.Delete') }}
+
+                          </button>
+                      </form>
+                  </div>
+
+                
+              </div>
+          </div>
+      </div>
+      <br><br><br>
+  @endforeach 
+  @else
+  <div class="text-center alert alert-danger">{{__('custom.There is no messages')}}</div>
+  @endif
+</div>
 @endsection

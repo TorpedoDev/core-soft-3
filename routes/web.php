@@ -51,7 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/messages/{id}' , [MessageController::class , 'destroy'])->name('messages.destroy');
 
     Route::resource('/question' , QuestionController::class);
-    Route::get('/question/changestatus/{id}' , [ServiceController::class , 'changeStatus'])->name('question.changestatus');
+    Route::get('/question/changestatus/{id}' , [QuestionController::class , 'changeStatus'])->name('question.changestatus');
 
     Route::resource('/service' , ServiceController::class);
     Route::get('/service/changestatus/{id}' , [ServiceController::class , 'changeStatus'])->name('service.changestatus');

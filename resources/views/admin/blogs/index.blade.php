@@ -1,4 +1,4 @@
-@extends('admin.admin')
+{{-- @extends('admin.admin')
 @section('title', 'المقاﻻت')
 @section('content')
 @if(session('success'))
@@ -92,6 +92,94 @@
       </div>
     </div>
   </div>
+</div>
+
+
+@endsection --}}
+
+
+
+
+
+
+
+
+@extends('admin.admin')
+@section('title', 'المقاﻻت')
+@section('content')
+<div class="container">
+  <div class="row">
+    <a style="float: right" class="btn btn-primary" href="{{route('blog.create')}}">{{ __('custom.Add Blog') }}</a>
+  </div>
+</div>
+<br><br>
+<div class="container">
+  @if(session('success'))
+  <div class="text-center alert alert-success">{{ session('success') }}</div>
+@endif
+  @if(isset($blogs) && !empty($blogs))
+  @foreach($blogs as $key => $blog)    
+  <div class="card">
+    <div class="card-header">
+      <h5> <strong>{{ __('custom.title_in_ar') }}</strong> : {{ $blog->title_ar }} </h5>
+      <br>
+      <h5> <strong>{{ __('custom.title_in_en') }}</strong> : {{ $blog->title_en }}</h5>
+    </div>
+
+    <div class="card-body">
+      {{-- <strong>{{__('custom.Image')}} : </strong> {{$pricing->logo}} --}}
+      <img src="{{asset('images/'.$blog->image)}}" width="350px" height="350px" alt="">
+      <br>
+   <br> <br>
+
+      <p>
+          <strong> {{ __('custom.content_in_ar') }} </strong> : {{ $blog->content_ar }}
+      </p>
+      <br>
+      <p>
+          <strong> {{ __('custom.content_in_en') }} </strong> : {{ $blog->content_en }}
+      </p>
+      <br>
+
+      <p>
+          <strong> {{ __('custom.Status') }} </strong> :
+          {{ $blog->status == 1 ? __('custom.Active') : __('custom.Disactive') }}
+      </p>
+    </div>
+
+
+    <div class="card-footer">
+<div class="row">
+  <div class="col-md-4">
+    <a href="{{ route('blog.edit' , $blog->id) }}" class="btn btn-warning">{{ __('custom.Edit') }}</a>
+  </div>
+
+  <div class="col-md-4">
+    <form action="{{ route('blog.destroy', $blog->id) }}" method="post">
+      @method('delete')
+      @csrf
+      <button class="btn btn-danger" type="submit"
+          onclick="return confirm('{{ __('custom.Are you already want to delete ?') }}')">
+          {{ __('custom.Delete') }}
+
+      </button>
+  </form>
+  </div>
+
+  <div class="col-md-4">
+    <a href="{{ route('blog.changestatus', $blog->id) }}"
+      class="{{ $blog->status == 1 ? 'btn btn-secondary' : 'btn btn-info' }}">
+      {{ $blog->status == 1 ? __('custom.Deactivate') : __('custom.Activate') }}
+  </a>
+  </div>
+
+ 
+</div>
+    </div>
+  </div>
+  <br><br><br>
+  @endforeach
+  @endif
 </div>
 
 

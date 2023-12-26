@@ -1,4 +1,4 @@
-@extends('admin.admin')
+{{-- @extends('admin.admin')
 @section('title', 'معلومات الاتصال')
 @section('content')
 @if(session('success'))
@@ -99,6 +99,106 @@
       </div>
     </div>
   </div>
+</div>
+
+
+@endsection --}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@extends('admin.admin')
+@section('title', 'معلومات الاتصال')
+@section('content')
+<div class="container">
+  <div class="row">
+    <a style="float: right" class="btn btn-primary" href="{{route('information.create')}}">{{ __('custom.Add Information') }}</a>
+  </div>
+</div>
+<br><br>
+<div class="container">
+  @if(session('success'))
+  <div class="text-center alert alert-success">{{ session('success') }}</div>
+@endif
+  @if(isset($informations) && !empty($informations))
+  @foreach($informations as $key => $information)    
+  <div class="card">
+    <div class="card-header">
+      <h5> <strong>{{ __('custom.phone') }}</strong> : {{ $information->phone }} </h5>
+      <br>
+      <h5> <strong>{{ __('custom.email') }}</strong> : {{ $information->email }}</h5>
+    </div>
+
+    <div class="card-body">
+     
+    
+      <p>
+        <strong> {{ __('custom.location_ar') }} </strong> : {{ $information->location_ar }}
+
+      </p>
+      <p>
+        <strong> {{ __('custom.location_en') }} </strong> : {{ $information->location_en }}
+
+      </p>
+      <br>
+
+      <p>
+        <strong> {{ __('custom.open_ar') }} </strong> : {{ $information->open_ar }}
+
+      </p>
+    <p>
+      <strong> {{ __('custom.open_en') }} </strong> : {{ $information->open_en }}
+
+    </p>
+   
+    
+      <br>
+      <p>
+          <strong> {{ __('custom.Status') }} </strong> :
+          {{ $information->status == 1 ? __('custom.Active') : __('custom.Disactive') }}
+      </p>
+    </div>
+
+
+    <div class="card-footer">
+<div class="row">
+  <div class="col-md-4">
+    <a href="{{ route('information.edit' , $information->id) }}" class="btn btn-warning">{{ __('custom.Edit') }}</a>
+  </div>
+
+  <div class="col-md-4">
+    <form action="{{ route('information.destroy', $information->id) }}" method="post">
+      @method('delete')
+      @csrf
+      <button class="btn btn-danger" type="submit"
+          onclick="return confirm('{{ __('custom.Are you already want to delete ?') }}')">
+          {{ __('custom.Delete') }}
+
+      </button>
+  </form>
+  </div>
+
+  <div class="col-md-4">
+    <a href="{{ route('information.changestatus', $information->id) }}"
+      class="{{ $information->status == 1 ? 'btn btn-secondary' : 'btn btn-info' }}">
+      {{ $information->status == 1 ? __('custom.Deactivate') : __('custom.Activate') }}
+  </a>
+  </div>
+</div>
+    </div>
+  </div>
+  <br><br><br>
+  @endforeach
+  @endif
 </div>
 
 

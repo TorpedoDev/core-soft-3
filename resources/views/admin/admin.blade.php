@@ -26,7 +26,7 @@
     @include('admin.includes.navbar')
     @include('admin.includes.sidebar')
     @yield('content')
-    @include('admin.includes.footer')
+    {{-- @include('admin.includes.footer') --}}
 
     <!-- plugins:js -->
   <script src="{{ asset('admin/vendors/js/vendor.bundle.base.js') }}"></script>

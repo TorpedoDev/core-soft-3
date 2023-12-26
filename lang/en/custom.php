@@ -316,4 +316,5 @@ return [
      'Your Name' => 'Your Name',
      'Your Email' => 'Your Email',
      'location' => 'Location',
+     'There is no messages' => 'There is no messages',
 ];

@@ -81,6 +81,13 @@
               <span class="menu-title">{{__('custom.Pricing')}}</span>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('messages.index')}}">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">{{__('custom.Messages')}}</span>
+            </a>
+          </li>
 {{-- 
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#sections" aria-expanded="false" aria-controls="sections">
